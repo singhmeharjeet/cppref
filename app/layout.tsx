@@ -34,6 +34,10 @@ export default async function RootLayout({ children }) {
 						defaultOpen: true,
 						toggleButton: true,
 					}}
+					toc={{
+						float: true,
+						title: "On this page",
+					}}
 				>
 					{children}
 				</Layout>
