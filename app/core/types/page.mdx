@@ -24,3 +24,51 @@ C++ provides a rich set of fundamental types that are used to represent various 
   - `char`: A character type, typically 1 byte.
   - `unsigned char`: An unsigned character type, typically 1 byte.
   - `signed char`: A signed character type, typically 1 byte.
+- **Boolean Type**: This type is used to represent truth values. The standard boolean type is:
+  - `bool`: A boolean type that can hold the values `true` or `false`.
+- **Wide Character Types**: These types are used to represent wide characters, which can represent a
+  larger set of characters than the standard character type. The standard wide character types
+  include:
+  - `wchar_t`: A wide character type, typically 2 or 4 bytes.
+- **Null Pointer Type**: This type is used to represent a null pointer. The standard null pointer type is:
+  - `nullptr`: A null pointer constant that can be used to represent a null pointer of any type.
+- **Void Type**: This type is used to represent the absence of a value. The standard void type is:
+  - `void`: A type that represents no value. It is often used as the return type of functions that do not
+	return a value.	
+	
+	
+# What is a type?
+To understand the what are types and how are they related to sizes, we need to understand the
+concept of memory. Memory is just a sequence of 0s and 1s (bit). A byte is a sequence of 8 bits.
+
+Lets say that you want to read a number from memory. And I give you the address of where the
+sequence of bits is stored which represents the number. The address
+represents the location of the first byte of the sequence. 
+
+Now lets say that you get to the address and see a sequence of bits like:
+```
+... 00000000 00000000 00000000 00000001 00000000 00000000 00000000 00000000 ...
+   ^ address points here
+```
+
+Now when you start reading the bits, you need to know how many bits to read. This is where the type comes in.
+The type tells you how many bits to read. For example, if the type is `int`, you need to read 4 bytes (32 bits).
+If the type is `char`, you need to read 1 byte (8 bits). If the type is `long`, you need to read 8
+bytes (64 bits).
+
+so for the same address (given above) if the value of the number read changes based on the type.
+
+|type of number | value of the number | bits read |
+|------|------------|-----------|
+| char  | 0          | 1         |
+| short | 0          | 2         |
+| int   | 1          | 4         |
+| long  | 2^16          | 8         |
+
+```
+... 00000000 00000000 00000000 00000001 00000000 00000000 00000000 00000000 ...
+   ^--char--^ 
+   ^------short------^
+   ^----------------int----------------^
+   ^---------------------------------long---------------------------------^
+```
