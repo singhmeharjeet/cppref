@@ -1,0 +1,91 @@
+---
+title: Header Files
+sidebar_position: 2
+---
+
+# Header Files in C++
+
+Header files are a fundamental part of C++ programming. They contain declarations of functions, classes, and variables that can be included and used in other source files.
+
+## Purpose of Header Files
+
+Header files serve several important purposes:
+
+1. **Code Reusability**: Declare functions, classes, and variables once and use them in multiple source files
+2. **Interface Definition**: Separate interface (declarations) from implementation (definitions)
+3. **Modular Programming**: Split large programs into smaller, manageable pieces
+4. **Precompiled Code**: Include standard library functionality
+
+## Common Standard Headers
+
+C++ provides a rich set of standard headers:
+
+### Input/Output Headers
+- `<iostream>`: Standard I/O streams (cin, cout, cerr)
+- `<fstream>`: File stream operations
+- `<sstream>`: String stream operations
+- `<iomanip>`: I/O manipulators for formatting
+
+```cpp
+#include <iostream>
+#include <iomanip>
+
+int main() {
+    std::cout << std::setw(10) << std::left << "Value:" << 42 << std::endl;
+    return 0;
+}
+```
+
+### String Manipulation Headers
+- `<string>`: String class and operations
+- `<cstring>`: C-style string functions
+
+## Header File Structure
+
+A typical header file includes:
+
+1. Include Guards (or `#pragma once`)
+2. Necessary #include directives
+3. Declarations (not definitions)
+4. Inline functions (if needed)
+5. Templates (if needed)
+
+### Example Header File
+
+```cpp
+// MyClass.h
+#ifndef MYCLASS_H
+#define MYCLASS_H
+
+class MyClass {
+public:
+    MyClass();
+    void doSomething();
+    
+private:
+    int m_data;
+};
+
+#endif // MYCLASS_H
+```
+
+## Best Practices for Header Files
+
+1. **Use include guards** or `#pragma once` to prevent multiple inclusion
+2. **Minimize includes** in header files to reduce compilation time
+3. **Forward declare** when possible instead of including headers
+4. **Don't include what you don't need**
+5. **Prefer .h extension** for your own headers (though .hpp is also common)
+6. **Include only declarations**, not definitions (except for templates and inline functions)
+
+## Include Search Paths
+
+When you use `#include <header>` or `#include "header"`, the compiler searches for headers in specific locations:
+
+- `#include <header>`: System or compiler headers (standard library)
+- `#include "header"`: Local project headers (your own files)
+
+You can specify additional include paths with compiler flags:
+```bash
+g++ -I/path/to/includes main.cpp
+```

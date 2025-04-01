@@ -1,0 +1,83 @@
+---
+title: Debugging
+description: Debugging C++ applications using GDB and LLDB
+keywords: [C++, Debugging, GDB, LLDB]
+asIndexPage: true
+---
+# Debugging C++ Applications
+Debugging is an essential part of the software development process, allowing developers to identify
+and fix issues in their code. In C++, two popular debugging tools are GDB (GNU Debugger) and LLDB
+(LLVM Debugger). This section provides an overview of these tools and their usage.
+## GDB (GNU Debugger)
+GDB is a powerful debugger for C and C++ programs. It allows you to inspect the state of your
+program
+while it is running, set breakpoints, and step through your code line by line. GDB can be used
+from the command line or integrated into various IDEs.
+### Basic GDB Commands	
+- `gdb <executable>`: Start GDB with the specified executable.
+- `run`: Start the program being debugged.
+- `break <line_number>`: Set a breakpoint at the specified line number.
+
+
+# Debugging in VS code
+
+you need to install the C/C++ extension for Visual Studio Code. This extension provides debugging
+support for C and C++ programs.
+
+### Setting Up Debugging in VS Code
+1. **Install the C/C++ Extension**: Open the Extensions view in VS Code (Ctrl+Shift+X) and search for
+   "C/C++". Install the extension provided by Microsoft.
+2. **Open Your C++ Project**: Open the folder containing your C++ project in VS Code.
+3. **Create a Debug Configuration**: 
+   - Open the Command Palette (Ctrl+Shift+P) and type "Debug: Open launch.json".
+   - Select "C++ (GDB/LLDB)" as the environment.
+   - This will create a `launch.json` file in the `.vscode` folder with a default configuration.
+4. **Configure the Debugger**: Modify the `launch.json` file to specify the path to your executable and
+   any arguments you want to pass to your program. Here is an example configuration:
+   ```json
+   {
+	   "version": "0.2.0",
+	   "configurations": [
+		   {
+			   "name": "C++ Launch",
+			   "type": "cppdbg",
+			   "request": "launch",
+			   "program": "${workspaceFolder}/path/to/your/executable",
+			   "args": [],
+			   "stopAtEntry": false,
+			   "cwd": "${workspaceFolder}",
+			   "environment": [],
+			   "externalConsole": false,
+			   "MIMode": "gdb",
+			   "setupCommands": [
+				   {
+					   "description": "Enable pretty-printing for gdb",
+					   "text": "-enable-pretty-printing",
+					   "ignoreFailures": true
+				   }
+			   ],
+			   "preLaunchTask": "build"
+		   }
+	   ]
+   }
+   ```	
+5. **Build Your Project**: Make sure your project is built and the executable is up to date. You can
+   use the built-in terminal in VS Code to run your build commands.
+6. **Start Debugging**: Press F5 or go to the Run view (Ctrl+Shift+D) and click the green play button
+   to start debugging. You can set breakpoints by clicking in the left margin next to the line numbers
+   in your source code.
+7. **Debugging Controls**: Use the debugging controls in the top bar to step over, step into, or
+   continue execution. You can also inspect variables, view the call stack, and evaluate expressions in
+   the Debug Console.
+8. **Inspect Variables**: Hover over variables in your code to see their current values. You can also
+   add variables to the Watch panel to monitor their values as you step through your code.
+9. **Debugging Output**: Use the Debug Console to evaluate expressions and print output during
+   debugging. You can also use the `cout` statement in your code to print debug information to the
+   console.
+10. **Stop Debugging**: To stop debugging, click the red square button in the top bar or press Shift+F5.
+11. **Debugging Tips**: 
+	- Use breakpoints to pause execution at specific lines of code.
+	- Step through your code line by line to understand the flow of execution.
+	- Inspect variables and data structures to identify issues.
+	- Use the Call Stack panel to navigate through function calls and understand the context of your
+	  program.
