@@ -4,7 +4,7 @@ description: C++ Fundamental Types
 keywords: C++, Fundamental Types
 ---
 
-# C++ Fundamental Types
+## C++ Fundamental Types
 
 C++ provides a rich set of fundamental types that are used to represent various kinds of data. These types can be broadly categorized into several groups:
 - **Integer Types**: These types are used to represent whole numbers. They can be signed (allowing both positive and negative values) or unsigned (only allowing non-negative values). The standard integer types include:
@@ -35,9 +35,13 @@ C++ provides a rich set of fundamental types that are used to represent various 
 - **Void Type**: This type is used to represent the absence of a value. The standard void type is:
   - `void`: A type that represents no value. It is often used as the return type of functions that do not
 	return a value.	
+  - `void*`: A type that stores a memory address without specifically indicating the type of data at that address. It is often used for generic pointers.
+- **Size Types**: These types are used to represent sizes and offsets in memory. The standard size types include:
+  - `size_t`: An unsigned integer type used to represent the size of an object in bytes. It is typically used for array indexing and loop counters.
+  - `ptrdiff_t`: A signed integer type used to represent the difference between two pointers. It is typically used for pointer arithmetic.
 	
 	
-# What is a type?
+## What is a type?
 To understand the what are types and how are they related to sizes, we need to understand the
 concept of memory. Memory is just a sequence of 0s and 1s (bit). A byte is a sequence of 8 bits.
 
@@ -62,8 +66,8 @@ so for the same address (given above) if the value of the number read changes ba
 |------|------------|-----------|
 | char  | 0          | 1         |
 | short | 0          | 2         |
-| int   | 1          | 4         |
-| long  | 2^16          | 8         |
+| int   | 2^0 (0th index)          | 4         |
+| long  | 2^16 (16th index)         | 8         |
 
 ```
 ... 00000000 00000000 00000000 00000001 00000000 00000000 00000000 00000000 ...
